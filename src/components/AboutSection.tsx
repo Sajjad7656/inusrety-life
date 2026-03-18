@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative z-30 -mt-20 px-4 lg:px-8">
+    <section id="about" className="mt-12 px-4 lg:px-8">
       <div className="max-w-screen-xl mx-auto">
         <div
           className="overflow-hidden rounded-3xl shadow-lg"
@@ -53,7 +53,7 @@ const AboutSection = () => {
         <div className="relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] mt-10 bg-white py-10 shadow-sm">
           <div className="px-6 lg:px-12">
             <p className="mx-auto max-w-4xl text-center text-xl font-semibold leading-relaxed text-navy">
-            At Insurety Life, the focus is on helping individuals explore final expense coverage options with care and clarity, keeping loved ones and future planning in mind.
+              At Insurety Life, the focus is on helping individuals explore final expense coverage options with care and clarity, keeping loved ones and future planning in mind.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row">
