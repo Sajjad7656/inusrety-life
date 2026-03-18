@@ -26,25 +26,26 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="py-20 bg-card">
-      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-navy text-center mb-4">
-          You Have Questions
-        </h2>
-        <p className="font-display text-xl text-navy text-center mb-12">We Have Answers</p>
-
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="bg-soft-gray rounded-lg border-none px-6">
-              <AccordionTrigger className="font-display font-semibold text-navy text-left hover:no-underline">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground font-body">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <section className="bg-white pb-24">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-white px-8 py-6 shadow-lg">
+          <Accordion type="single" collapsible defaultValue="faq-0" className="w-full">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="border-b border-gray-100 last:border-b-0"
+              >
+                <AccordionTrigger className="py-6 text-left font-display font-semibold text-navy hover:no-underline data-[state=open]:text-blue-600">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 text-muted-foreground font-body text-sm leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

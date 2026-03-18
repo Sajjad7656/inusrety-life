@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import QuotePage from "./pages/QuotePage.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
 import Apidata from "./pages/Apidata.tsx";
 import AgentLoginPage from "./pages/AgentLoginPage.tsx";
@@ -38,6 +39,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/agentlogin" element={<AgentLoginPage />} />
             <Route path="/quote" element={<QuotePage />} />
             <Route path="/thank-you" element={<ThankYou />} />

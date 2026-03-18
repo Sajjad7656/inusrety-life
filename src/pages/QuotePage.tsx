@@ -35,28 +35,6 @@ const QuotePage = () => {
     agreeToTCPA: "",
   });
 
-  useEffect(() => {
-    // IMPORTANT: use the real browser URL (window.location.search),
-    // because earlier we may have cleaned the query string without router sync.
-    const urlParams = new URLSearchParams(window.location.search);
-    const zip = urlParams.get("zipcode");
-
-    if (zip) {
-      prefilledFromQueryRef.current = true;
-
-      const numericValue = zip.replace(/\D/g, "").slice(0, 5);
-      setFormData((prev) => ({ ...prev, zipCode: numericValue }));
-      setErrors((prev) => ({ ...prev, zipCode: "" }));
-      return;
-    }
-
-    // No ?zipcode=... in URL:
-    // Only clear the field if user opened "/quote" fresh (not after prefill cleanup).
-    if (!prefilledFromQueryRef.current) {
-      setFormData((prev) => ({ ...prev, zipCode: "" }));
-      setErrors((prev) => ({ ...prev, zipCode: "" }));
-    }
-  }, [location.search, navigate]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -201,13 +179,13 @@ const QuotePage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background with gradient */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           background: `linear-gradient(135deg, #151940 0%, #7B6658 100%)`
         }}
       />
-      
+
       {/* Header */}
       <header className="relative z-10 shadow-sm" style={{ backgroundColor: '#09103E' }}>
         <div className="container mx-auto px-4 lg:px-8 py-4">
@@ -215,8 +193,8 @@ const QuotePage = () => {
             <a href="/" className="flex items-center gap-2">
               <img src="/images/logo.png" alt="Insurety Life" className="h-10" />
             </a>
-            <a 
-              href="/" 
+            <a
+              href="/"
               className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -236,7 +214,7 @@ const QuotePage = () => {
                 Get A Quote
               </h1>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <div className="text-white">
