@@ -1,8 +1,77 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getCookieValue, removeCookiesByPrefix } from "@/lib/cookies";
+import { LEADID_COOKIE_PREFIX } from "@/config/medalertApiConfig";
 
 const HeroSection = () => {
   const [zipCode, setZipCode] = useState("");
+  const [zipError, setZipError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isAgentLoggedIn = getCookieValue("agentLoggedIn") === "true";
+  const urlZip = new URLSearchParams(location.search).get("zipcode");
+  const HOME_CLEAR_ZIP_FLAG = "inusrety_home_clear_zip_on_url_set";
+
+  // Sync zip input with URL param (agent flow)
+  useEffect(() => {
+    if (!urlZip) return;
+
+    const numericValue = urlZip.replace(/\D/g, "").slice(0, 5);
+
+    // After first submit: URL gets ?zipcode=... but input should clear
+    if (sessionStorage.getItem(HOME_CLEAR_ZIP_FLAG) === "1") {
+      sessionStorage.removeItem(HOME_CLEAR_ZIP_FLAG);
+      setZipCode("");
+      setZipError("");
+      return;
+    }
+
+    setZipCode(numericValue);
+    setZipError("");
+  }, [location.search, urlZip]);
+
+  // On Home load: remove old LeadID cookies to keep tokens fresh
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+    removeCookiesByPrefix(LEADID_COOKIE_PREFIX);
+  }, [location.pathname]);
+
+  const handleSubmit = () => {
+    const cleanedZip = zipCode.replace(/\D/g, "").slice(0, 5);
+
+    if (cleanedZip.length !== 5) {
+      setZipError("Please enter 5 digit zipcode.");
+      return;
+    }
+
+    setZipError("");
+
+    if (isAgentLoggedIn) {
+      // First submit: stay on Home but set ?zipcode=... in URL
+      if (!urlZip) {
+        sessionStorage.setItem(HOME_CLEAR_ZIP_FLAG, "1");
+        window.history.replaceState(
+          null,
+          "",
+          `/?zipcode=${encodeURIComponent(cleanedZip)}`
+        );
+        window.location.reload();
+        return;
+      }
+
+      // Second submit: wait 5 seconds then go to Quote with zipcode prefill
+      window.setTimeout(() => {
+        navigate(`/quote`);
+      }, 5000);
+      return;
+    }
+
+    // Not logged in: go to Quote without URL params
+    navigate(`/quote`);
+  };
 
   return (
     <section className="pt-20" style={{ backgroundColor: "#09103E" }}>
@@ -34,10 +103,25 @@ const HeroSection = () => {
                 type="text"
                 placeholder="Zip Code"
                 value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
+                inputMode="numeric"
+                pattern="\d*"
+                maxLength={5}
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/\D/g, "").slice(0, 5);
+                  setZipCode(numericValue);
+                  setZipError("");
+                }}
+                onPaste={(e) => e.preventDefault()}
                 className="w-full px-4 py-3 rounded-md text-gray-900 bg-white border border-white/30 outline-none mb-3"
               />
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition-colors">
+              {zipError && (
+                <p className="mt-2 text-sm text-red-400 mb-3">{zipError}</p>
+              )}
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition-colors"
+              >
                 Get Started
               </button>
             </div>
