@@ -17,12 +17,6 @@ const Header = () => {
           <a href="#contact" className="font-medium text-white hover:text-blue-400 transition-colors">Contact Us</a>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <a href="/quote" className="bg-blue-100 text-blue-700 font-medium text-sm px-6 py-2.5 rounded-full hover:bg-blue-200 transition-colors">
-            Get a Quote
-          </a>
-        </div>
-
         <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden text-white">
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -33,9 +27,6 @@ const Header = () => {
           <a href="/" className="block font-medium text-white">Home</a>
           <a href="#about" className="block font-medium text-white">About Us</a>
           <a href="#contact" className="block font-medium text-white">Contact Us</a>
-          <a href="/quote" className="inline-block bg-blue-100 text-blue-700 font-medium text-sm px-6 py-2.5 rounded-full">
-            Get a Quote
-          </a>
         </div>
       )}
     </header>
