@@ -32,7 +32,6 @@ const QuotePage = () => {
     lastName: "",
     zipCode: "",
     phone: "",
-    agreeToTCPA: "",
   });
 
 
@@ -83,22 +82,18 @@ const QuotePage = () => {
 
       const firstName = formData.firstName.trim();
       const lastName = formData.lastName.trim();
-      const agreeToTCPA = formData.agreeToTCPA;
-
       const nextErrors = {
         firstName: !firstName ? "Please fill all fields first name." : "",
         lastName: !lastName ? "Please fill all fields last name." : "",
         zipCode: cleanedZip.length !== 5 ? "Please enter 5 digit zipcode." : "",
         phone: cleanedPhone.length !== 10 ? "Please enter 10 digit phone number." : "",
-        agreeToTCPA: agreeToTCPA ? "" : "Please check the consent box.",
       };
 
       const hasError =
         nextErrors.firstName ||
         nextErrors.lastName ||
         nextErrors.zipCode ||
-        nextErrors.phone ||
-        nextErrors.agreeToTCPA;
+        nextErrors.phone
 
       setErrors(nextErrors);
       if (hasError) return;
@@ -331,22 +326,17 @@ const QuotePage = () => {
 
                   {/* TCPA Agreement */}
                   <div className="pt-4">
-                    <label className="flex items-start gap-3 cursor-pointer">
+                    <label className="text-xs sm:text-sm leading-relaxed text-white/90">
                       <input
                         type="checkbox"
-                        name="agreeToTCPA"
-                        checked={formData.agreeToTCPA}
-                        onChange={handleInputChange}
-                        className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                        required
+                        id="leadid_tcpa_disclosure"
+                        className="mr-2"
                       />
                       <span className="text-sm text-gray-600 leading-relaxed">
                         By checking this box, you represent you are 18+ years of age and agree to the Privacy Policy and Terms and Conditions. By selecting the above check box you agree by your electronic signature that you give written consent to be contacted by insuretylife.com and the licensed insurance agents working under that name by phone, email, and text/SMS to the home or mobile number(s) I provided even if my provided number is on a national or state Do Not Call Registry. This is a solicitation for insurance. In some cases, pre-recorded messages and automated technology may be used to contact you for marketing purposes. Carrier data rates may apply. This consent is not required as a condition to purchase services or products. Consent can be revoked at any time for any reason through any reasonable means. Submitting false information may subject you to liability.
                       </span>
+
                     </label>
-                    {errors.agreeToTCPA && (
-                      <p className="text-sm text-red-500 mt-2">{errors.agreeToTCPA}</p>
-                    )}
                   </div>
 
                   {/* Submit Button */}
