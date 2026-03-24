@@ -32,7 +32,6 @@ const QuotePage = () => {
     lastName: "",
     zipCode: "",
     phone: "",
-    agreeToTCPA: "",
   });
 
 
@@ -83,22 +82,18 @@ const QuotePage = () => {
 
       const firstName = formData.firstName.trim();
       const lastName = formData.lastName.trim();
-      const agreeToTCPA = formData.agreeToTCPA;
-
       const nextErrors = {
         firstName: !firstName ? "Please fill all fields first name." : "",
         lastName: !lastName ? "Please fill all fields last name." : "",
         zipCode: cleanedZip.length !== 5 ? "Please enter 5 digit zipcode." : "",
         phone: cleanedPhone.length !== 10 ? "Please enter 10 digit phone number." : "",
-        agreeToTCPA: agreeToTCPA ? "" : "Please check the consent box.",
       };
 
       const hasError =
         nextErrors.firstName ||
         nextErrors.lastName ||
         nextErrors.zipCode ||
-        nextErrors.phone ||
-        nextErrors.agreeToTCPA;
+        nextErrors.phone 
 
       setErrors(nextErrors);
       if (hasError) return;
@@ -334,11 +329,7 @@ const QuotePage = () => {
                     <label className="text-xs sm:text-sm leading-relaxed text-white/90">
                       <input
                         type="checkbox"
-                        name="agreeToTCPA"
                         id="leadid_tcpa_disclosure"
-                        checked={formData.agreeToTCPA}
-                        onChange={handleInputChange}
-                        required
                         className="mr-2"
                       />
                       <span className="text-sm text-gray-600 leading-relaxed">
@@ -346,9 +337,6 @@ const QuotePage = () => {
                       </span>
 
                     </label>
-                    {errors.agreeToTCPA && (
-                      <p className="text-sm text-red-500 mt-2">{errors.agreeToTCPA}</p>
-                    )}
                   </div>
 
                   {/* Submit Button */}

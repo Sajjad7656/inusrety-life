@@ -66,12 +66,12 @@ const ThankYou = () => {
           Hours of Operation: 8 AM to 7 PM EST
         </p>
 
-        <Link
+        {/* <Link
           to="/"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow transition-colors"
         >
           ⬅️ Return to Home
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
