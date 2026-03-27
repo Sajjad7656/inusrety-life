@@ -13,7 +13,7 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center gap-8">
           <a href="/" className="font-medium text-white hover:text-blue-400 transition-colors">Home</a>
-          <a href="#about" className="font-medium text-white hover:text-blue-400 transition-colors">About Us</a>
+          <a href="/about" className="font-medium text-white hover:text-blue-400 transition-colors">About Us</a>
           <a href="/contact" className="font-medium text-white hover:text-blue-400 transition-colors">Contact Us</a>
         </nav>
 
@@ -31,7 +31,7 @@ const Header = () => {
       {mobileOpen && (
         <div className="md:hidden px-4 py-6 space-y-4" style={{ backgroundColor: '#09103E' }}>
           <a href="/" className="block font-medium text-white">Home</a>
-          <a href="#about" className="block font-medium text-white">About Us</a>
+          <a href="/about" className="block font-medium text-white">About Us</a>
           <a href="/contact" className="block font-medium text-white">Contact Us</a>
           <a href="/quote" className="inline-block bg-blue-100 text-blue-700 font-medium text-sm px-6 py-2.5 rounded-full">
             Get a Quote

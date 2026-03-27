@@ -9,11 +9,11 @@ const AboutSection = () => {
           style={{ backgroundColor: "#FFE6C5" }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="relative min-h-[320px] lg:min-h-[420px]">
+            <div className="relative aspect-[16/9] lg:aspect-auto lg:min-h-[360px] bg-[#F5DDBE]">
               <img
-                src="/images/3"
+                src="/images/3.jpeg"
                 alt="About Insurety Life"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
               />
             </div>
 
