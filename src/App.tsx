@@ -11,6 +11,8 @@ import ThankYou from "./pages/ThankYou.tsx";
 import Apidata from "./pages/Apidata.tsx";
 import AgentLoginPage from "./pages/AgentLoginPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import TermsConditions from "./pages/TermsConditions.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -41,6 +43,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsConditions />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/agentlogin" element={<AgentLoginPage />} />
             <Route path="/quote" element={<QuotePage />} />
