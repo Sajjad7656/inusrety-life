@@ -21,16 +21,16 @@ const Footer = () => {
             <h4 className="font-display font-bold text-navy mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li><a href="/" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Home</a></li>
-              <li><a href="/about" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">About Us</a></li>
-              <li><a href="/contact" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Contact Us</a></li>
+              <li><a href="/about-us" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">About Us</a></li>
+              <li><a href="/contact-us" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-navy mb-4">Legal Links</h4>
             <ul className="space-y-3">
-              <li><a href="/privacy" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Terms of Use</a></li>
+              <li><a href="/privacy-policy" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions" className="text-muted-foreground font-body text-sm hover:text-navy transition-colors">Terms and Conditions</a></li>
             </ul>
           </div>
 
