@@ -1,8 +1,22 @@
 import { Phone } from "lucide-react";
 
-const AboutSection = () => {
+type AboutSectionProps = {
+  variant?: "home" | "page";
+};
+
+const AboutSection = ({ variant = "home" }: AboutSectionProps) => {
   return (
+<<<<<<< Updated upstream
     <section id="about" className="mt-12 px-4 lg:px-8">
+=======
+    <section
+      id="about"
+      className={
+        "px-4 lg:px-8 " +
+        (variant === "home" ? "relative z-30 -mt-20" : "relative z-10 mt-12")
+      }
+    >
+>>>>>>> Stashed changes
       <div className="max-w-screen-xl mx-auto">
         <div
           className="overflow-hidden rounded-3xl shadow-lg"
@@ -11,9 +25,9 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[320px] lg:min-h-[420px]">
               <img
-                src="/images/3"
+                src="/images/3.jpeg"
                 alt="About Insurety Life"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
 

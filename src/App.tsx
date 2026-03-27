@@ -7,13 +7,18 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import QuotePage from "./pages/QuotePage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
+<<<<<<< Updated upstream
 import ThankYou from "./pages/ThankYou.tsx";
 import Apidata from "./pages/Apidata.tsx";
 import AgentLoginPage from "./pages/AgentLoginPage.tsx";
+=======
+import AboutPage from "./pages/AboutPage.tsx";
+>>>>>>> Stashed changes
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
+<<<<<<< Updated upstream
 const App = () => {
   useEffect(() => {
     // Load leadid.js once (global) so LeadID cookies work on all routes.
@@ -52,5 +57,25 @@ const App = () => {
     </QueryClientProvider>
   );
 };
+=======
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/quote" element={<QuotePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+>>>>>>> Stashed changes
 
 export default App;
