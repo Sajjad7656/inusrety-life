@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
 import Apidata from "./pages/Apidata.tsx";
 import AgentLoginPage from "./pages/AgentLoginPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/agentlogin" element={<AgentLoginPage />} />
             <Route path="/quote" element={<QuotePage />} />
