@@ -1,8 +1,18 @@
 import { Phone } from "lucide-react";
 
-const AboutSection = () => {
+type AboutSectionProps = {
+  variant?: "home" | "page";
+};
+
+const AboutSection = ({ variant = "home" }: AboutSectionProps) => {
   return (
-    <section id="about" className="mt-12 px-4 lg:px-8">
+<section
+      id="about"
+      className={
+        "px-4 lg:px-8 " +
+        (variant === "home" ? "relative z-30 -mt-20" : "relative z-10 mt-12")
+      }
+    >
       <div className="max-w-screen-xl mx-auto">
         <div
           className="overflow-hidden rounded-3xl shadow-lg"
@@ -13,7 +23,7 @@ const AboutSection = () => {
               <img
                 src="/images/3.jpeg"
                 alt="About Insurety Life"
-                className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
+className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
 
