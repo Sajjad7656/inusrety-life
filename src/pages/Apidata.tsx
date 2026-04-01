@@ -176,7 +176,7 @@ const Apidata = () => {
     <div className="min-h-screen flex flex-col items-center from-blue-100 to-indigo-100 py-12 px-4">
       <div className="bg-white rounded-2xl shadow-lg max-w-2xl w-full p-8">
         <h1 className="text-3xl font-bold text-indigo-700 text-center mb-8">
-          getmedalertnow
+          insuretylife
         </h1>
 
         <div className="space-y-3 text-gray-800">
