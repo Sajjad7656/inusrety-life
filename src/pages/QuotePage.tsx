@@ -164,7 +164,7 @@ const QuotePage = () => {
       navigate(`/thank-you`);
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Please try again later.");
+      // alert("Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
